@@ -6,6 +6,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screeens/HomeScreen';
 import ChartScreen from './screeens/ChartScreen';
 import DonutPieChartScreen from './screeens/DonutPieChartScreen';
+import CalculatorScreen from './screeens/CalculatorScreen';
+import AddTransaction from './screeens/AddTransaction';
 
 
 const Stack = createNativeStackNavigator()
@@ -16,6 +18,8 @@ export default function App() {
         <Stack.Screen name='Chart1' component={DonutPieChartScreen} />
         <Stack.Screen name='Chart' component={ChartScreen} />
         <Stack.Screen name='Home' component={HomeScreen} />
+        <Stack.Screen name='AddTransaction' component={AddTransaction} />
+        {/* <Stack.Screen name='Calculator' component={CalculatorScreen} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

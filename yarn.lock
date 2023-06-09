@@ -5787,6 +5787,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
 
+"react-native-calculator@^0.5.2":
+  "integrity" "sha512-KAsWEP9a56r8RyORudx+YGvMhTYdIK4eJ2Gcps1Yu6r1OszFziaKASDnvlFN8uTOFwAwGGsacj8cMJtV3D8hQA=="
+  "resolved" "https://registry.npmjs.org/react-native-calculator/-/react-native-calculator-0.5.2.tgz"
+  "version" "0.5.2"
+
 "react-native-circular-chart@^1.0.9":
   "integrity" "sha512-LKQeol2LavO5itdlymrHF1hd+zfCpNSf3iABvoV9cL20inF1EwYUaQnNdGR/ss25xwUAVaOelGyi+riqLE5PCw=="
   "resolved" "https://registry.npmjs.org/react-native-circular-chart/-/react-native-circular-chart-1.0.9.tgz"

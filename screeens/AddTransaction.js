@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Alert, Modal, StyleSheet, Text, Pressable, View, TextInput} from 'react-native';
+import Icon, { EntypoIcon } from 'react-native-vector-icons/Entypo'
 
 
 const AddTransaction = ({modalVisible,setModalVisible,setModalValue,setModalColor}) => {
@@ -24,7 +25,32 @@ const AddTransaction = ({modalVisible,setModalVisible,setModalValue,setModalColo
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <Text style={styles.modalText}>Income</Text>
-              <TextInput keyboardType="numeric" placeholder='e.g 8000' onChangeText={getValue}/>
+              <View style={styles.amountView}>
+              <TextInput style={styles.amountInput} keyboardType="numeric" placeholder='e.g 8000' onChangeText={getValue}/>
+              <Text style={styles.amountInputTitle}>PKR</Text>
+              {/* <EntypoIcon name='calculator'/> */}
+              <Icon name="calculator" size={30} color="#D3D3D3" />
+              </View>
+
+              <Text style={styles.categoryMainTitle}>Categories</Text>
+              <View style={styles.categories}>
+              <View style={styles.categoryType}>
+              <Text style={styles.categoryTitle}>Categories</Text>
+              </View>
+              <View style={styles.categoryType}>
+              <Text style={styles.categoryTitle}>Categories</Text>
+              </View>
+              <View style={styles.categoryType}>
+              <Text style={styles.categoryTitle}>Categories</Text>
+              </View>
+              <View style={styles.categoryType}>
+              <Text style={styles.categoryTitle}>Categories</Text>
+              </View>
+              <View style={styles.categoryType}>
+              <Text style={styles.categoryTitle}>Categories</Text>
+              </View>
+              </View>
+
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(!modalVisible)}>
@@ -51,7 +77,45 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       marginTop: 22,
     },
+    amountView:{
+      display:'flex',
+      justifyContent:'center',
+      alignItems:'center',
+      flexDirection:'row'
+    },
+    amountInput:{
+      width:'40%',
+      borderBottomColor:'green',
+      borderBottomWidth:2,
+      padding:10,
+      margin:10,
+    },
+    amountInputTitle:{
+      color:'green',
+      fontWeight:'bold',
+      fontSize:24,
+      paddingRight:10,
+    },
+    categories:{
+      width:'100%',
+      display:'flex',
+      flexDirection:'row',
+      flexWrap:'wrap',
+      justifyContent:'center',
+      alignItems:'center',
+    },
+    categoryType:{
+      display:"flex",
+      alignItems:'center',
+      justifyContent: "center",
+      height:100,
+      width:100,
+      borderRadius:50,
+      backgroundColor:'purple',
+    },
     modalView: {
+      flex:1,
+      width:'100%',
       margin: 20,
       backgroundColor: 'white',
       borderRadius: 20,

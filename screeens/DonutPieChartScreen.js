@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react'
 import PieChart from 'react-native-pie-chart'
 import AddTransaction from './AddTransaction';
 
-const DonutPieChartScreen = () => {
+const DonutPieChartScreen = ({navigation}) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [modalValue, setModalValue] = useState(0);
     const [modalColor, setModalColor] = useState('');
     const modalHandler = () => {
         setModalVisible(!modalVisible)
+        navigation.navigate('AddTransaction');
+
     }
     const widthAndHeight = 250
     // const series = [123, 321, 123, 789, 537]
@@ -58,5 +60,7 @@ const styles = StyleSheet.create({
       title: {
         fontSize: 24,
         margin: 10,
+        // position:'absolute',
+        top:100
       },
 })

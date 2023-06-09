@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "money-exchanger",
+    "slug": "money-exchanger",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "money-exchanger"
+}

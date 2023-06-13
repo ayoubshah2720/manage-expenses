@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect } from 'react';
 import * as IconSets from "react-native-vector-icons"
 import DonutPieChartScreen from './DonutPieChartScreen';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   const retrieveData = async () => {
     try {
       const value = JSON.parse(await AsyncStorage.getItem("accounts"))
@@ -22,6 +22,7 @@ const HomeScreen = () => {
 
     <View style={styles.container}>
       <Text>HomeScreen</Text>
+      <Button title='Add' onPress={()=> navigation.navigate('AddAccount',)}/>
       <View style={styles.chartView}>
       <DonutPieChartScreen />
       </View>

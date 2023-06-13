@@ -37,12 +37,7 @@ export default function App() {
         <Stack.Screen name='AddBalance' component={AddBalance} />
         <Stack.Screen name='Chart1' component={DonutPieChartScreen} />
         <Stack.Screen name='Chart' component={ChartScreen} />
-        {/* <Stack.Screen name='Home' component={HomeScreen} 
-        options={{
-          title: 'Awesome app',
-          headerTitle: ()=>{
-            <Button title='Add new' style={{color:'purple'}}/>
-          }}}/> */}
+        <Stack.Screen name='AddAccount' component={AddAccount} />
         <Stack.Screen name='Home' component={HomeScreen} options={({ navigation }) => ({
           title: 'Awesome app',
           headerStyle: {

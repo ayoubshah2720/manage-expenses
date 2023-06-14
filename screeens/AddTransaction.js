@@ -3,12 +3,14 @@ import { Alert, Modal, StyleSheet, Text, Pressable, View, TextInput, TouchableOp
 import Icon, { EntypoIcon } from 'react-native-vector-icons/Entypo'
 import { addExpense } from '../redux/expensesSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { addIncome } from '../redux/incomesSlice';
 
 
 const AddTransaction = (props) => {
 
   const dispatch = useDispatch()
   const selectedAccount = useSelector((state) => state.account)
+  const selectedTab = useSelector((state) => state.tab)
   let data;
 
   const getValue = (val) => {
@@ -29,13 +31,19 @@ const AddTransaction = (props) => {
       currencyUnit: selectedAccount[0]?.currencyUnit,
       pId: selectedAccount[0]?.id
     }
-    dispatch(addExpense(data))
+
+    if (selectedTab == 0) {
+      dispatch(addExpense(data))
+    } else {
+      dispatch(addIncome(data))
+
+    }
 
     props.setModalVisible(false);
   }
 
   useEffect(() => {
-    // console.log('selectedaccount addtransaction',selectedAccount)
+    console.log('selectedTab addtransaction',selectedTab)
   })
   return (
     <View style={styles.centeredView}>

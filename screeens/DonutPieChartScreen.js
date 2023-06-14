@@ -119,10 +119,10 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     marginHorizontal: 4,
     borderRadius: 4,
-    backgroundColor: 'lightgray',
+    backgroundColor: '#857ADF',
   },
   activeFilterButton: {
-    backgroundColor: 'lightblue',
+    backgroundColor: '#5FBB7D',
   },
   filterButtonText: {
     fontSize: 14,

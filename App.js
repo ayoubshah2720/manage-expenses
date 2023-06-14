@@ -30,9 +30,12 @@ export default function App() {
     <Provider store={Store}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name='authScreen' component={AuthScreen} />
-          <Stack.Screen name='currencyScreen' component={CurrencyList} />
-          <Stack.Screen name='AddBalance' component={AddBalance} />
+          <Stack.Screen name='authScreen' component={AuthScreen}
+          options={{headerShown: false}} />
+          <Stack.Screen name='currencyScreen' component={CurrencyList} 
+          options={{headerShown: false}}/>
+          <Stack.Screen name='AddBalance' component={AddBalance} 
+          options={{headerShown: false}}/>
 
                     <Stack.Screen name='Home' component={HomeScreen} options={({ navigation }) => ({
             title: 'Awesome app',

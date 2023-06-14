@@ -8,9 +8,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 const HomeScreen = ({ navigation }) => {
 
   const allExpenses = useSelector((state)=> state.expenses)
+  const allIncomes = useSelector((state)=> state.incomes)
+  const selectedTab = useSelector((state)=> state.tab)
   useEffect(() => {
-    console.log('allExpenses',allExpenses)
-  },[allExpenses])
+  },[allExpenses,allIncomes,selectedTab])
   return (
 
     <View style={styles.container}>
@@ -22,7 +23,7 @@ const HomeScreen = ({ navigation }) => {
       </View>
       <ScrollView>
       <View style={styles.mainIconContainer}>
-        {allExpenses && allExpenses.map((item)=> {
+        {(allExpenses && selectedTab == 0) && allExpenses.map((item)=> {
           return(
         <View key={item.id} style={[styles.expenseType, { backgroundColor: item.color }]}>
           {/* <IconSets.Fontisto style={styles.icon} name="bus" size={30} color="#fff" /> */}
@@ -30,6 +31,16 @@ const HomeScreen = ({ navigation }) => {
         </View>
           )
         })}
+
+{(allIncomes && selectedTab == 1) && allIncomes.map((item)=> {
+          return(
+        <View key={item.id} style={[styles.expenseType, { backgroundColor: item.color }]}>
+          {/* <IconSets.Fontisto style={styles.icon} name="bus" size={30} color="#fff" /> */}
+          <Text style={styles.expenseTypeTitle}> {item.name} </Text>
+        </View>
+          )
+        })}
+
       </View>
       </ScrollView>
     </ScrollView>

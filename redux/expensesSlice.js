@@ -8,12 +8,7 @@ export const expensesSlice = createSlice({
     addExpense: (state, action) => {
       console.log('state',state,'action',action )
       console.log('state',state.length )
-      if (state.length > 0) {
-        state = [action.payload, ...state];
-      } else {
-        state.push(action.payload)
-      }
-      return state;
+        return state = [action.payload, ...state];
 
     },
     updateExpense: (state, action) => {

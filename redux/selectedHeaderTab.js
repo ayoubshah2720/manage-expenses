@@ -6,7 +6,7 @@ export const selectedHeaderTab = createSlice({
   reducers: {
     selectedTab: (state, action) => {
       console.log('reducer selected tab ', action.payload)
-      state = action.payload;
+      return state = action.payload;
     },
   },
 })

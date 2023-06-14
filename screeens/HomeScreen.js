@@ -28,6 +28,7 @@ const HomeScreen = ({ navigation }) => {
         <View key={item.id} style={[styles.expenseType, { backgroundColor: item.color }]}>
           {/* <IconSets.Fontisto style={styles.icon} name="bus" size={30} color="#fff" /> */}
           <Text style={styles.expenseTypeTitle}> {item.name} </Text>
+          <Text style={styles.expenseTypeTitle}> {item.value} {item.currencyUnit} </Text>
         </View>
           )
         })}
@@ -37,6 +38,7 @@ const HomeScreen = ({ navigation }) => {
         <View key={item.id} style={[styles.expenseType, { backgroundColor: item.color }]}>
           {/* <IconSets.Fontisto style={styles.icon} name="bus" size={30} color="#fff" /> */}
           <Text style={styles.expenseTypeTitle}> {item.name} </Text>
+          <Text style={styles.expenseTypeTitle}> {item.value} {item.currencyUnit} </Text>
         </View>
           )
         })}
@@ -54,10 +56,13 @@ const styles = StyleSheet.create({
   expenseType:{
     width:'100%',
     display: "flex",
+    flexDirection:'row',
     width: '80%',
     borderRadius: 10,
     marginTop:10,
     padding:20,
+    alignItems:'center',
+    justifyContent:'space-between'
   },
   expenseTypeTitle:{
     color:'#fff',

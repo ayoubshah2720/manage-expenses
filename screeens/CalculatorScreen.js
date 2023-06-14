@@ -8,9 +8,9 @@ const CalculatorScreen = () => {
       <Text>CalculatorScreen</Text>
       {/* <Calculator style={{ flex: 1 }} /> */}
       <CalculatorInput
-          fieldTextStyle={{ fontSize: 24 }}
-          fieldContainerStyle={{ height: 36 }}
-        />
+        fieldTextStyle={{ fontSize: 24 }}
+        fieldContainerStyle={{ height: 36 }}
+      />
     </View>
   )
 }
@@ -18,7 +18,7 @@ const CalculatorScreen = () => {
 export default CalculatorScreen
 
 const styles = StyleSheet.create({
-    container: {
-        flex:1,
-    }
+  container: {
+    flex: 1,
+  }
 })

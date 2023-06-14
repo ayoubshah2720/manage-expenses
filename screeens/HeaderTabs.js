@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { selectedTab } from '../redux/selectedHeaderTab';
 
 const HeaderTabs = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const dispatch = useDispatch()
 
   const handleTabPress = (tab) => {
     setActiveTab(tab);
+    dispatch(selectedTab(tab))
   };
 
   return (
@@ -29,17 +33,17 @@ const HeaderTabs = () => {
 
 const styles = StyleSheet.create({
   container: {
-    display:'flex',
+    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     // backgroundColor: 'lightblue',
     height: 50,
-    width:'100%',
+    width: '100%',
     // backgroundColor:'#90eea0'
   },
   tab: {
-    display:'flex',
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     borderBottomWidth: 5,
@@ -47,14 +51,14 @@ const styles = StyleSheet.create({
     // paddingHorizontal:10,
   },
   activeTab: {
-    color:'#fff',
+    color: '#fff',
     borderBottomColor: '#fff',
   },
   tabText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color:'#fff',
-    padding:5
+    color: '#fff',
+    padding: 5
   },
 });
 

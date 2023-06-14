@@ -1,48 +1,38 @@
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect } from 'react';
 import * as IconSets from "react-native-vector-icons"
 import DonutPieChartScreen from './DonutPieChartScreen';
+import { useSelector } from 'react-redux';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-const HomeScreen = ({navigation}) => {
-  const retrieveData = async () => {
-    try {
-      const value = JSON.parse(await AsyncStorage.getItem("accounts"))
-      if (value !== null) {
-        // We have data!!
-        console.log('selectedItem=========', value);
-      }
-    } catch (error) {
-      // Error retrieving data
-    }
-  };
+const HomeScreen = ({ navigation }) => {
+
+  const allExpenses = useSelector((state)=> state.expenses)
   useEffect(() => {
-    retrieveData()
-  })
+    console.log('allExpenses',allExpenses)
+  },[allExpenses])
   return (
 
     <View style={styles.container}>
+      <ScrollView>
       <Text>HomeScreen</Text>
-      <Button title='Add' onPress={()=> navigation.navigate('AddAccount',)}/>
+      <Button title='Add' onPress={() => navigation.navigate('AddAccount',)} />
       <View style={styles.chartView}>
-      <DonutPieChartScreen />
+        <DonutPieChartScreen />
       </View>
+      <ScrollView>
       <View style={styles.mainIconContainer}>
-        <View style={[styles.iconContainer, { backgroundColor: 'purple' }]}>
-          <IconSets.Fontisto style={styles.icon} name="bus" size={30} color="#fff" />
+        {allExpenses && allExpenses.map((item)=> {
+          return(
+        <View key={item.id} style={[styles.expenseType, { backgroundColor: item.color }]}>
+          {/* <IconSets.Fontisto style={styles.icon} name="bus" size={30} color="#fff" /> */}
+          <Text style={styles.expenseTypeTitle}> {item.name} </Text>
         </View>
-        <View style={[styles.iconContainer, { backgroundColor: 'green' }]}>
-          <IconSets.Fontisto style={styles.icon} name="shopping-bag" size={30} color="#fff" />
-        </View>
-        <View style={[styles.iconContainer, { backgroundColor: 'lightpink' }]}>
-          <IconSets.MaterialCommunityIcons style={styles.icon} name="arm-flex-outline" size={30} color="#fff" />
-        </View>
-        <View style={[styles.iconContainer, { backgroundColor: 'skyblue' }]}>
-          <IconSets.MaterialCommunityIcons style={styles.icon} name="gift" size={30} color="#fff" />
-        </View>
-        <View style={[styles.iconContainer, { backgroundColor: 'yellow' }]}>
-          <IconSets.MaterialIcons style={styles.icon} name="family-restroom" size={30} color="#fff" />
-        </View>
+          )
+        })}
       </View>
+      </ScrollView>
+    </ScrollView>
     </View>
   )
 }
@@ -50,18 +40,30 @@ const HomeScreen = ({navigation}) => {
 export default HomeScreen
 
 const styles = StyleSheet.create({
+  expenseType:{
+    width:'100%',
+    display: "flex",
+    width: '80%',
+    borderRadius: 10,
+    marginTop:10,
+    padding:20,
+  },
+  expenseTypeTitle:{
+    color:'#fff',
+    fontSize:20,
+    fontWeight:'bold',
+  },
   container: {
     flex: 1,
-    backgroundColor: 'gray'
+    backgroundColor: 'lightblue'
   },
-  chartView:{
+  chartView: {
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor:'lightgreen'
   },
   mainIconContainer: {
     width: '100%',
@@ -72,7 +74,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   iconContainer: {
-    // flex:1,
     display: "flex",
     alignItems: 'center',
     justifyContent: "center",

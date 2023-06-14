@@ -1,30 +1,51 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert, Modal, StyleSheet, Text, Pressable, View, TextInput, TouchableOpacity } from 'react-native';
 import Icon, { EntypoIcon } from 'react-native-vector-icons/Entypo'
+import { addExpense } from '../redux/expensesSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 
-const AddTransaction = ({ modalVisible, setModalVisible, setModalValue, setModalColor }) => {
+const AddTransaction = (props) => {
+
+  const dispatch = useDispatch()
+  const selectedAccount = useSelector((state) => state.account)
+  let data;
+
   const getValue = (val) => {
-    console.log('val', val)
-    setModalValue(val);
+    props.setModalValue(val);
   }
-  const hideHandler = () => {
-    setModalVisible(false);
-    // setModalColor('red');
+
+  const handleColor = (color, type) => {
+    props.setModalColor(color);
+    props.setExpenseType(type)
   }
-  const handleColor = (color) => {
-    setModalColor(color);
-    console.log('color', color)
+
+  const submitHandler = () => {
+    data = {
+      id: Math.floor(Math.random() * 1000),
+      name: props.expenseType,
+      value: props.modalValue,
+      color: props.modalColor,
+      currencyUnit: selectedAccount[0]?.currencyUnit,
+      pId: selectedAccount[0]?.id
+    }
+    dispatch(addExpense(data))
+
+    props.setModalVisible(false);
   }
+
+  useEffect(() => {
+    // console.log('selectedaccount addtransaction',selectedAccount)
+  })
   return (
     <View style={styles.centeredView}>
       <Modal
         animationType="slide"
         transparent={true}
-        visible={modalVisible}
+        visible={props.modalVisible}
         onRequestClose={() => {
           Alert.alert('Modal has been closed.');
-          setModalVisible(!modalVisible);
+          props.setModalVisible(!props.modalVisible);
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
@@ -38,28 +59,28 @@ const AddTransaction = ({ modalVisible, setModalVisible, setModalValue, setModal
 
             <Text style={styles.categoryMainTitle}>Categories</Text>
             <View style={styles.categories}>
-              <TouchableOpacity onPress={() => handleColor('#90EE90')}>
+              <TouchableOpacity onPress={() => handleColor('#90EE90', 'Workout')}>
                 <View style={[styles.categoryType, { backgroundColor: '#90EE90' }]}>
                   <Text style={styles.categoryTitle}>Workout</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => handleColor('#D8BFD8')}>
+              <TouchableOpacity onPress={() => handleColor('#D8BFD8', 'Fashion')}>
                 <View style={[styles.categoryType, { backgroundColor: '#D8BFD8' }]}>
                   <Text style={styles.categoryTitle}>Fashion</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => handleColor('#89CFF0')}>
-                <View style={[styles.categoryType, { backgroundColor: '#89CFF0' }]}>
+              <TouchableOpacity onPress={() => handleColor('#857ADF', 'Transport')}>
+                <View style={[styles.categoryType, { backgroundColor: '#857ADF' }]}>
                   <Text style={styles.categoryTitle}>Transport</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => handleColor('#ffb6c1')}>
+              <TouchableOpacity onPress={() => handleColor('#ffb6c1', 'Medical')}>
                 <View style={[styles.categoryType, { backgroundColor: '#ffb6c1' }]}>
                   <Text style={styles.categoryTitle}>Medical</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => handleColor('#ADD8E6')}>
-                <View style={[styles.categoryType, { backgroundColor: '#ADD8E6' }]}>
+              <TouchableOpacity onPress={() => handleColor('#FF6666', 'Food')}>
+                <View style={[styles.categoryType, { backgroundColor: '#FF6666' }]}>
                   <Text style={styles.categoryTitle}>Food</Text>
                 </View>
               </TouchableOpacity>
@@ -67,17 +88,12 @@ const AddTransaction = ({ modalVisible, setModalVisible, setModalValue, setModal
 
             <Pressable
               style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}>
-              <Text style={styles.textStyle} onPress={hideHandler}>Hide Modal</Text>
+              onPress={submitHandler}>
+              <Text style={styles.textStyle}>Add</Text>
             </Pressable>
           </View>
         </View>
       </Modal>
-      <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </Pressable>
     </View>
   );
 }

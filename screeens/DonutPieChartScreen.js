@@ -2,12 +2,16 @@ import { Button, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 're
 import React, { useEffect, useState } from 'react'
 import PieChart from 'react-native-pie-chart'
 import AddTransaction from './AddTransaction';
+import { useSelector } from 'react-redux';
 
-const DonutPieChartScreen = ({ navigation }) => {
+const DonutPieChartScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalValue, setModalValue] = useState(0);
   const [modalColor, setModalColor] = useState('');
+  const [expenseType, setExpenseType] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('days');
+
+  const selectedTab = useSelector((state)=> state.tab)
   const modalHandler = () => {
     setModalVisible(!modalVisible)
     // navigation.navigate('AddTransaction');
@@ -17,22 +21,20 @@ const DonutPieChartScreen = ({ navigation }) => {
     setSelectedFilter(filter);
   };
   const widthAndHeight = 250
-  // const series = [123, 321]
-  // const sliceColor = ['#fbd203', '#ff3c00']
-  // const sliceColor = ['#AABDAF']
 
-  // const [series, setSeries] = useState([123, 321]);
   const [series, setSeries] = useState([100]);
-  // const [sliceColor, setSliceColor] = useState(['purple', 'lightblue']);
   const [sliceColor, setSliceColor] = useState(['#AABDAF']);
 
   useEffect(() => {
-    console.log('modalValue',modalValue,'modalColor',modalColor)
-    // setSeries[{...series,modalValue}];
-    // setSliceColor[{...sliceColor,modalColor}];
-    series.push(modalValue);
-    sliceColor.push(modalColor);
-  }, [modalValue,modalColor])
+    console.log('modalValue', modalValue, 'modalColor', modalColor, 'expenseType', expenseType)
+    // if(selectedTab == 0){
+      // }
+      series.push(modalValue);
+      sliceColor.push(modalColor);
+    // } else {
+
+    // }
+  }, [modalValue, modalColor,expenseType,selectedTab])
   return (
     <ScrollView style={{ flex: 1 }}>
       <View style={styles.container}>
@@ -78,10 +80,14 @@ const DonutPieChartScreen = ({ navigation }) => {
         />
         {modalVisible ?
           <AddTransaction
+          modalValue={modalValue}
+          modalColor={modalColor}
+          expenseType={expenseType}
             modalVisible={modalVisible}
             setModalVisible={setModalVisible}
             setModalValue={setModalValue}
-            setModalColor={setModalColor} />
+            setModalColor={setModalColor}
+            setExpenseType={setExpenseType} />
           : null}
         <Button title='Add' onPress={modalHandler} />
       </View>

@@ -1,15 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createSlice } from '@reduxjs/toolkit'
 
-// const initialState = {
-//   value: [],
-// }
-
-export const accountSlice = createSlice({
-  name: 'accounts',
+export const incomesSlice = createSlice({
+  name: 'incomes',
   initialState: [],
   reducers: {
-    addAccount: (state, action) => {
+    addIncome: (state, action) => {
       if (state.length) {
         state = [action.payload, ...state];
       } else {
@@ -18,16 +14,16 @@ export const accountSlice = createSlice({
       return state;
 
     },
-    updateAccount: (state, action) => {
+    updateIncome: (state, action) => {
       return state.push(action.payload)
     },
-    deleteAccount: (state, action) => {
+    deleteIncome: (state, action) => {
       state.value += action.payload
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addAccount, updaateAccount, deleteAccount } = accountSlice.actions
+export const { addIncome, updateIncome, deleteIncome } = incomesSlice.actions
 
-export default accountSlice.reducer
+export default incomesSlice.reducer

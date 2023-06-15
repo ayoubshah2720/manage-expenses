@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useDispatch } from 'react-redux';
 import { addAccount } from '../redux/accountSlice.js';
 import { selectedAccount } from '../redux/selectedAccountSlice.js';
+import { addAmount } from '../redux/totalAmountSlice.js';
 
 let data;
 const AddBalance = ({ navigation, route }) => {
@@ -24,6 +25,7 @@ const AddBalance = ({ navigation, route }) => {
       dispatch(selectedAccount(data))
     }
     dispatch(addAccount(data))
+    dispatch(addAmount({value:data.value, type:'incomes'}))
     try {
       await AsyncStorage.setItem("accounts", JSON.stringify(data));
       console.warn('localstorage set')

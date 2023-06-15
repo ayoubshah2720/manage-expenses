@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, Modal, StyleSheet, Text, Pressable, View, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 import Icon, { EntypoIcon } from 'react-native-vector-icons/Entypo'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectedAccount } from '../redux/selectedAccountSlice';
 
 
 const AccountsInHeader = ({ modalVisible, setModalVisible, setModalValue, setModalColor }) => {
   const allAccounts = useSelector((state) => state.accounts)
 
   const [selectedValue, setSelectedValue] = useState('');
+  const dispatch = useDispatch()
 
-  const handleRadioSelect = (value) => {
-    console.log('touched value',value)
-    setSelectedValue(value);
+  const handleRadioSelect = (item) => {
+    dispatch(selectedAccount(item))
+    setSelectedValue(item.id);
   };
 
   // const handlePress = () => {
@@ -44,7 +46,7 @@ const AccountsInHeader = ({ modalVisible, setModalVisible, setModalValue, setMod
                 <TouchableOpacity
                   style={styles.radioButtonContainer}
                   key={item.id}
-                  onPress={()=> handleRadioSelect(item.id)}
+                  onPress={()=> handleRadioSelect(item)}
                 >
                   <View
                     style={[

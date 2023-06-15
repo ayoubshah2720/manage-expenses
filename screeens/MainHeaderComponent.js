@@ -9,6 +9,7 @@ import AccountsInHeader from './AccountsInHeader';
 
 const MainHeaderComponent = () => {
     const selectedAccount = useSelector((state) => state.account)
+    const total = useSelector((state) => state.total)
     const [modalVisible, setModalVisible] = useState(false);
     const [modalValue, setModalValue] = useState(0);
     const [modalColor, setModalColor] = useState('');
@@ -38,7 +39,7 @@ const MainHeaderComponent = () => {
                     <AntDesign name='caretdown' size={20} color='#fff' />
                 </View>
                 <View style={styles.headerIconsWithTitle}>
-                    <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold' }}> {selectedAccount[0]?.value} </Text>
+                    <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold' }}> {total.value} </Text>
                     <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold' }}> {selectedAccount[0]?.currencyUnit} </Text>
 
                 </View>

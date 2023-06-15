@@ -3,6 +3,7 @@ import { Alert, Modal, StyleSheet, Text, Pressable, View, TextInput, ScrollView,
 import { useDispatch, useSelector } from 'react-redux';
 import { addAccount } from '../redux/accountSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { addAmount } from '../redux/totalAmountSlice';
 
 
 const AddAccount = ({ route }) => {
@@ -34,6 +35,7 @@ const AddAccount = ({ route }) => {
             currencyUnit: 'PKR'
         }
         dispatch(addAccount(data))
+        dispatch(addAmount({value:data.value, type:'incomes'}))
     }
     useEffect(() => {
         console.log('allData', allData)

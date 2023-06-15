@@ -4,6 +4,7 @@ import Icon, { EntypoIcon } from 'react-native-vector-icons/Entypo'
 import { addExpense } from '../redux/expensesSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { addIncome } from '../redux/incomesSlice';
+import { addAmount } from '../redux/totalAmountSlice';
 
 
 const AddTransaction = (props) => {
@@ -34,8 +35,10 @@ const AddTransaction = (props) => {
 
     if (selectedTab == 0) {
       dispatch(addExpense(data))
+      dispatch(addAmount({value: data.value, type:'expenses'}))
     } else {
       dispatch(addIncome(data))
+      dispatch(addAmount({value: data.value, type:'incomes'}))
 
     }
 

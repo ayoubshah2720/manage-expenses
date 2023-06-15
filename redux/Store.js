@@ -4,6 +4,7 @@ import selectedAccountSlice from './selectedAccountSlice'
 import expensesSlice from './expensesSlice'
 import selectedHeaderTab from './selectedHeaderTab'
 import incomesSlice from './incomesSlice'
+import totalAmountSlice from './totalAmountSlice'
 
 export const Store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const Store = configureStore({
     tab: selectedHeaderTab,
     expenses: expensesSlice,
     incomes: incomesSlice,
+    total: totalAmountSlice,
   },
 })

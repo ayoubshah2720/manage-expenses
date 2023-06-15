@@ -17,7 +17,7 @@ const HomeScreen = ({ navigation }) => {
     <View style={styles.container}>
       <ScrollView>
       <Text>HomeScreen</Text>
-      <Button title='Add' onPress={() => navigation.navigate('AddAccount',)} />
+      <Button title='Add Account' style={styles.addAccount} onPress={() => navigation.navigate('AddAccount',)} />
       <View style={styles.chartView}>
         <DonutPieChartScreen />
       </View>
@@ -97,5 +97,10 @@ const styles = StyleSheet.create({
     width: 100,
     borderRadius: 50,
     backgroundColor: 'gray',
-  }
+  },
+  addAccount: {
+    width:'80%',
+    padding:20,
+    margin:20,
+  },
 })

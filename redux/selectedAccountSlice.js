@@ -5,7 +5,6 @@ export const selectedAccountSlice = createSlice({
   initialState: [],
   reducers: {
     selectedAccount: (state, action) => {
-      console.log('selectedAccount ', action.payload)
       state.push(action.payload)
     },
   },

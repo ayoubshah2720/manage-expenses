@@ -36,7 +36,6 @@ const AddBalance = ({ navigation, route }) => {
     navigation.replace('Home')
   }
   useEffect(() => {
-    console.log('selectedItem', route.params)
     // retrieveData()
   })
   return (

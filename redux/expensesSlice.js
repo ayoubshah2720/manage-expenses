@@ -6,8 +6,6 @@ export const expensesSlice = createSlice({
   initialState: [],
   reducers: {
     addExpense: (state, action) => {
-      console.log('state',state,'action',action )
-      console.log('state',state.length )
         return state = [action.payload, ...state];
 
     },
@@ -15,7 +13,8 @@ export const expensesSlice = createSlice({
       return state.push(action.payload)
     },
     deleteExpense: (state, action) => {
-      state.value += action.payload
+      state = state.filter((item)=> item.id !== action.payload)
+      return state
     },
   },
 })

@@ -26,7 +26,6 @@ const DonutPieChartScreen = () => {
   const [sliceColor, setSliceColor] = useState(['#AABDAF']);
 
   useEffect(() => {
-    console.log('modalValue', modalValue, 'modalColor', modalColor, 'expenseType', expenseType)
     // if(selectedTab == 0){
       // }
       series.push(modalValue);

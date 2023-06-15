@@ -25,11 +25,11 @@ const CurrencyList = ({ navigation }) => {
 
     return (
 
-        <View>
+        <View style={styles.container}>
             {currencies.map((item) => (
                 <View style={styles.currencyName} key={item.id}>
                     <TouchableOpacity
-                        style={[styles.button, activeTab === item.id && styles.activeButton]}
+                        style={[styles.currencyButton, activeTab === item.id && styles.activeButton]}
                         onPress={() => handlePress(item)}
                         key={item.id}
                     >
@@ -48,6 +48,11 @@ const CurrencyList = ({ navigation }) => {
 export default CurrencyList;
 
 const styles = StyleSheet.create({
+    container:{
+        flex:1,
+        marginTop:100,
+        borderRadius: 10,
+    },
     currencyName: {
         // backgroundColor: 'purple',
         // padding: 15,
@@ -58,9 +63,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         borderRadius: 10,
     },
-    button: {
+    currencyButton: {
         padding: 15,
-        backgroundColor: 'blue',
+        backgroundColor: '#90EE90',
         borderRadius: 5,
     },
     buttonText: {
@@ -68,7 +73,16 @@ const styles = StyleSheet.create({
         color: 'black'
     },
     activeButton: {
-        backgroundColor: '#90eea0',
+        backgroundColor: '#FF6666',
         color: 'black'
     },
+    mainButton:{
+        alignItems: 'center',
+    backgroundColor: '#AD436D',
+    height: 30,
+    width: 150,
+    marginTop: 20,
+    justifyContent: 'center',
+    
+    }
 })

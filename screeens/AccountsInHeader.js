@@ -24,7 +24,6 @@ const AccountsInHeader = ({ modalVisible, setModalVisible, setModalValue, setMod
   }
 
   useEffect(() => {
-    console.log('allAccounts', allAccounts)
   }, [allAccounts])
   return (
     <View style={styles.centeredView}>

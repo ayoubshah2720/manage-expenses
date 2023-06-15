@@ -6,14 +6,14 @@ export const incomesSlice = createSlice({
   initialState: [],
   reducers: {
     addIncome: (state, action) => {
-      console.log('state',state,'action',action)
         return state = [action.payload, ...state];
     },
     updateIncome: (state, action) => {
       return state.push(action.payload)
     },
     deleteIncome: (state, action) => {
-      state.value += action.payload
+      state = state.filter((item)=> item.id !== action.payload)
+      return state
     },
   },
 })

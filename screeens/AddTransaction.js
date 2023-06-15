@@ -46,7 +46,6 @@ const AddTransaction = (props) => {
   }
 
   useEffect(() => {
-    console.log('selectedTab addtransaction',selectedTab)
   })
   return (
     <View style={styles.centeredView}>
@@ -63,8 +62,7 @@ const AddTransaction = (props) => {
             <Text style={styles.modalText}>Income</Text>
             <View style={styles.amountView}>
               <TextInput style={styles.amountInput} keyboardType="numeric" placeholder='e.g 8000' onChangeText={getValue} />
-              <Text style={styles.amountInputTitle}>PKR</Text>
-              {/* <EntypoIcon name='calculator'/> */}
+              <Text style={styles.amountInputTitle}>{selectedAccount[0]?.currencyUnit? selectedAccount[0]?.currencyUnit : PKR}</Text>
               <Icon name="calculator" size={30} color="#D3D3D3" />
             </View>
 

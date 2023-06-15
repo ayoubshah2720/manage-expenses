@@ -13,6 +13,7 @@ import AddAccount from './screeens/AddAccount';
 import { Provider, useSelector } from 'react-redux';
 import { Store } from './redux/Store';
 import MainHeaderComponent from './screeens/MainHeaderComponent';
+import SingleExpenseIncome from './screeens/SingleExpenseIncome';
 
 
 const Stack = createNativeStackNavigator()
@@ -39,6 +40,7 @@ export default function App() {
 
                     <Stack.Screen name='Home' component={HomeScreen} options={({ navigation }) => ({
             title: 'Awesome app',
+            headerBackVisible:false,
             headerStyle: {
               backgroundColor: '#90eea0',
               width: '100%'
@@ -48,6 +50,9 @@ export default function App() {
             ),
           })} />
           <Stack.Screen name='AddTransaction' component={AddTransaction} />
+          <Stack.Screen name='SingleExpenseIncome' component={SingleExpenseIncome} options={()=>({
+            title:'Transaction Details',
+          })}/>
           <Stack.Screen name='AddAccount' component={AddAccount} />
           {/* <Stack.Screen name='Calculator' component={CalculatorScreen} /> */}
         </Stack.Navigator>

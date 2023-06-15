@@ -38,7 +38,6 @@ const AddAccount = ({ route }) => {
         dispatch(addAmount({value:data.value, type:'incomes'}))
     }
     useEffect(() => {
-        console.log('allData', allData)
         try {
             AsyncStorage.setItem("accounts", JSON.stringify(allData));
         } catch (error) {
@@ -53,7 +52,7 @@ const AddAccount = ({ route }) => {
                 <Text style={styles.modalText}> Add account </Text>
                 <View style={styles.amountView}>
                     <TextInput style={styles.amountInput} keyboardType="numeric" placeholder='e.g 8000' onChangeText={getAmountValue} />
-                    <Text style={styles.amountInputTitle}>PKR</Text>
+                    <Text style={styles.amountInputTitle}>{selectedAccount[0]?.currencyUnit? selectedAccount[0]?.currencyUnit : PKR}</Text>
                 </View>
 
                 <View style={styles.accountName}>
